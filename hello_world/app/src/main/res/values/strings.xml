@@ -3,4 +3,7 @@
     <string name="text_counter">Count is %d.</string>
     <string name="button">Count</string>
     <string name="no_count">Not counted yet.</string>
+    <string name="implicit">Implicit Intent</string>
+    <string name="explicit">Explicit Intent</string>
+    <string name="title_activity_second">SecondActivity</string>
 </resources>

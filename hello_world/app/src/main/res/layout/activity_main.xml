@@ -9,10 +9,16 @@
     tools:context="de.fhws.helloworld.MainActivity">
 
     <Button
-        android:id="@+id/myButton"
+        android:id="@+id/explicit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button" />
+        android:text="@string/explicit" />
+
+    <Button
+        android:id="@+id/implicit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/implicit" />
 
     <TextView
         android:id="@+id/myTextView"
