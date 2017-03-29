@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 
 public class SecondActivity extends AppCompatActivity {
 
+    public static final String RESULT_DATA = "result";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,4 +22,11 @@ public class SecondActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(text);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent result = new Intent();
+        result.putExtra(RESULT_DATA, "GoodBye");
+        setResult(RESULT_OK, result);
+    }
 }
