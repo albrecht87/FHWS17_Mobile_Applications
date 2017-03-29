@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView mImageView;
 
     private EditText mInputView;
+
+    private TextView mTextView;
 
     @Override
     public void onClick(final View v) {
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode) {
             case EXPLICIT_INTENT:
                 if (resultCode == RESULT_OK) {
-                    mInputView.setText(
+                    mTextView.setText(
                             data.getExtras()
                                     .getString(SecondActivity.RESULT_DATA, "no return value"));
                 }
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mInputView = (EditText) findViewById(R.id.editText);
+        mTextView = (TextView) findViewById(R.id.myTextView);
         mImageView = (ImageView) findViewById(R.id.imageView);
 
         final Button explicitButton = (Button) findViewById(R.id.explicit);
