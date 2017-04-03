@@ -6,4 +6,5 @@
     <string name="implicit">Implicit Intent</string>
     <string name="explicit">Explicit Intent</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_floating_action">FloatingActionActivity</string>
 </resources>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="de.fhws.helloworld"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -26,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.fhws.helloworld.MainActivity" />
         </activity>
+        <activity
+            android:name=".FloatingActionActivity"
+            android:label="@string/title_activity_floating_action"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

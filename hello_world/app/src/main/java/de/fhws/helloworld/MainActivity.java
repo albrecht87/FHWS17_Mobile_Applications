@@ -73,5 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Button implicitButton = (Button) findViewById(R.id.implicit);
         explicitButton.setOnClickListener(this);
         implicitButton.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
     }
 }
