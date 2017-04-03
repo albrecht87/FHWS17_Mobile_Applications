@@ -27,9 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(final View v) {
         switch (v.getId()) {
             case R.id.explicit:
-                final Intent intent = new Intent(this, SecondActivity.class);
-                intent.putExtra("userinput", mInputView.getText().toString());
-                startActivityForResult(intent, EXPLICIT_INTENT);
+                final Intent intent = new Intent(this, FloatingActionActivity.class);
+                startActivity(intent);
                 break;
             case R.id.implicit:
                 final Intent implicit = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

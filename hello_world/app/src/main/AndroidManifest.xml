@@ -31,7 +31,12 @@
         <activity
             android:name=".FloatingActionActivity"
             android:label="@string/title_activity_floating_action"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.fhws.helloworld.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
