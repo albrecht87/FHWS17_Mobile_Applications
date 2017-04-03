@@ -6,11 +6,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import de.fhws.helloworld.adapter.DataAdapter;
 
 public class FloatingActionActivity extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class FloatingActionActivity extends AppCompatActivity {
         }
 
         //Create an Adapter
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        DataAdapter arrayAdapter = new DataAdapter(this, arrayList);
 
         //Reference Listview and set Adapter
         ListView listView = (ListView) findViewById(R.id.list);
