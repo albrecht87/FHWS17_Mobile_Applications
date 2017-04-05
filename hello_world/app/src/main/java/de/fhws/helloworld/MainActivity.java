@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.fhws.helloworld.recyclerview.RecyclerviewActivity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int EXPLICIT_INTENT = 1;
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.implicit:
                 final Intent implicit = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(implicit, IMAGE_INTENT);
+                break;
+            case R.id.recycler:
+                final Intent recycler = new Intent(this, RecyclerviewActivity.class);
+                startActivity(recycler);
                 break;
         }
     }
@@ -70,8 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final Button explicitButton = (Button) findViewById(R.id.explicit);
         final Button implicitButton = (Button) findViewById(R.id.implicit);
+        final Button recyclerButton = (Button) findViewById(R.id.recycler);
+
         explicitButton.setOnClickListener(this);
         implicitButton.setOnClickListener(this);
+        recyclerButton.setOnClickListener(this);
         mImageView.setOnClickListener(this);
+
     }
 }

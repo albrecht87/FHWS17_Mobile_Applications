@@ -5,6 +5,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,15 @@
         <activity
             android:name=".FloatingActionActivity"
             android:label="@string/title_activity_floating_action"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.fhws.helloworld.MainActivity" />
+        </activity>
+        <activity
+            android:name=".recyclerview.RecyclerviewActivity"
+            android:label="@string/title_activity_recyclerview"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

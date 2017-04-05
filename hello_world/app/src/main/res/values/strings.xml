@@ -7,4 +7,6 @@
     <string name="explicit">Explicit Intent</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_floating_action">FloatingActionActivity</string>
+    <string name="title_activity_recyclerview">RecyclerviewActivity</string>
+    <string name="recycler">recyclerview</string>
 </resources>
