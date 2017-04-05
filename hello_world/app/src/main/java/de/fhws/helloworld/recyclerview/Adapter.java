@@ -16,13 +16,7 @@ import de.fhws.helloworld.R;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    private final OnItemClickListener mListener;
-
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         final ImageView mImageView;
 
@@ -46,13 +40,30 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
     }
 
+    public interface OnItemClickListener {
+
+        void onItemClick(int position);
+    }
+
+    public interface OnBottomReachListener {
+
+        void onBottom(int postition);
+    }
+
     private static final String TAG = Adapter.class.getSimpleName();
 
     private ArrayList<String> mData;
 
-    public Adapter(final OnItemClickListener listener, final ArrayList data) {
+    private final OnItemClickListener mListener;
+
+    private final OnBottomReachListener mOnBottomReachListener;
+
+
+    public Adapter(final OnItemClickListener listener, final ArrayList data,
+            final OnBottomReachListener onBottomReachListener) {
         mListener = listener;
         mData = data;
+        mOnBottomReachListener = onBottomReachListener;
     }
 
     @Override
@@ -62,6 +73,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        if (position >= getItemCount() - 1) {
+            mOnBottomReachListener.onBottom(position);
+        }
+
         holder.mTitle.setText(mData.get(position));
         final Picasso picasso = Picasso.with(holder.mImageView.getContext());
         picasso.setLoggingEnabled(true);
