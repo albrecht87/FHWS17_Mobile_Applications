@@ -97,20 +97,14 @@ public class RecyclerviewActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    showProgressBar(true);
-                    Thread.sleep(1000);
-                    insertNewData(startIndex, numberOfNews, list);
-                    notifyAdapter();
-                    showProgressBar(false);
+                showProgressBar(true);
+                waitSomeTime(1000);
+                insertNewData(startIndex, numberOfNews, list);
+                notifyAdapter();
+                showProgressBar(false);
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }).start();
-
-
     }
 
     private void notifyAdapter() {
@@ -121,6 +115,14 @@ public class RecyclerviewActivity extends AppCompatActivity {
                 mProgressBar.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    private void waitSomeTime(final int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
