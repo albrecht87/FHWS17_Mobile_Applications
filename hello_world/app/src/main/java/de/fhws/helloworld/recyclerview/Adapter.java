@@ -4,7 +4,6 @@ package de.fhws.helloworld.recyclerview;
 import com.squareup.picasso.Picasso;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,13 @@ import de.fhws.helloworld.R;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    private final OnItemClickListener mListener;
+
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         final ImageView mImageView;
 
@@ -28,13 +33,25 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             mTitle = (TextView) itemView.findViewById(R.id.headline);
             mImageView = (ImageView) itemView.findViewById(R.id.card_image);
         }
+
+        void setClickListener(final int position) {
+            final View.OnClickListener onClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    mListener.onItemClick(position);
+                }
+            };
+            mTitle.setOnClickListener(onClickListener);
+            mImageView.setOnClickListener(onClickListener);
+        }
     }
 
     private static final String TAG = Adapter.class.getSimpleName();
 
     private ArrayList<String> mData;
 
-    public Adapter(final ArrayList data) {
+    public Adapter(final OnItemClickListener listener, final ArrayList data) {
+        mListener = listener;
         mData = data;
     }
 
@@ -48,13 +65,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.mTitle.setText(mData.get(position));
         final Picasso picasso = Picasso.with(holder.mImageView.getContext());
         picasso.setLoggingEnabled(true);
-        picasso.load("https://source.unsplash.com/random/800x600&raandom="+position)
-                .stableKey(""+position)
+        picasso.load("https://source.unsplash.com/random/800x600&raandom=" + position)
+                .stableKey("" + position)
                 .into(holder.mImageView);
+        holder.setClickListener(position);
     }
+
     @Override
     public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        Log.d(TAG, "onCreateViewHolder");
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_card, parent, false);
         return new ViewHolder(view);

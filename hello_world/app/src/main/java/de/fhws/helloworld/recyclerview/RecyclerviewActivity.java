@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,6 +15,8 @@ import de.fhws.helloworld.R;
 import static de.fhws.helloworld.FloatingActionActivity.lorem;
 
 public class RecyclerviewActivity extends AppCompatActivity {
+
+    private static final String TAG = RecyclerviewActivity.class.getSimpleName();
 
     private Adapter mAdapter;
 
@@ -42,7 +45,12 @@ public class RecyclerviewActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new Adapter(mockData);
+        mAdapter = new Adapter(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(final int position) {
+                Log.d(TAG, "onItemClick: "+position);
+            }
+        }, mockData);
         mRecyclerView.setAdapter(mAdapter);
     }
 
